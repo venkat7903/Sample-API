@@ -1,0 +1,49 @@
+POST http://localhost:3000/register/
+Content-Type: application/json
+
+{
+    "username": "raj",
+    "name": "raj",
+    "password": "1234"
+}
+
+###
+
+POST http://localhost:3000/login/
+Content-Type: application/json
+
+{
+    "username": "raj",
+    "password": "1234"
+}
+
+###
+
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwiUEFTU1dPUkQiOiIkMmIkMTAkMXV5M3JxQnJsWnd2VWNDOUFrTDAvZUhydEhiWkRzZXEudzFjWHgyWEFBRGhOSC56cUExUE8iLCJpYXQiOjE3MTE5MDE2Nzd9.i6CPwHhZ0lNsVqgr9Lxb4FqbFF3bQ6dbCcUzrh0eOb4
+
+###
+
+
+###
+
+GET http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
+
+###
+
+GET http://localhost:3000/products?orderBy=price&order=DESC
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
+
+###
+
+POST http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
+Content-Type: application/json
+
+{
+    "productName": "Clips",
+    "imageUrl": "https://5.imimg.com/data5/PK/QK/GY/SELLER-81178992/snap-hair-clips-500x500.jpg",
+    "price": 10
+}
+
+###
