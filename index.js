@@ -5,7 +5,6 @@ const sqlite3 = require("sqlite3");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
-const { request } = require("http");
 
 const app = express();
 
@@ -42,11 +41,11 @@ const authenticateToken = (request, response, next) => {
   }
 
   if (jwtToken === undefined) {
-    response.status(401).send("Invalid Jwt Token");
+    response.status(401).send({ message: "Invalid Jwt Token" });
   } else {
     jwt.verify(jwtToken, "SECRET_KEY", (error, payload) => {
       if (error) {
-        response.status(401).send("Invalid Jwt Token");
+        response.status(401).send({ message: "Invalid Jwt Token" });
       } else {
         request.payload = payload;
         next();
@@ -124,3 +123,31 @@ app.post("/products/", authenticateToken, async (request, response) => {
     message: `Product is added successfully with productId ${dbResponse.lastID}`,
   });
 });
+
+//Update product API
+app.put(
+  "/products/:productId/",
+  authenticateToken,
+  async (request, response) => {
+    const { productId } = request.params;
+    const selectProduct = `SELECT * FROM products WHERE id=${productId};`;
+    const dbProduct = await db.get(selectProduct);
+    const {
+      productName = dbProduct.product_name,
+      imageUrl = dbProduct.image_url,
+      price = dbProduct.price,
+    } = request.body;
+
+    const updateQuery = `
+      UPDATE products 
+      SET 
+        product_name='${productName}',
+        image_url='${imageUrl}',
+        price=${price}
+      WHERE
+        id=${productId};
+`;
+    await db.run(updateQuery);
+    response.send({ message: "Product Details Updated Successfully" });
+  }
+);
