@@ -5,6 +5,7 @@ const sqlite3 = require("sqlite3");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
+const { request } = require("http");
 
 const app = express();
 
@@ -109,6 +110,20 @@ app.get("/products/", authenticateToken, async (request, response) => {
   const productsArray = await db.all(getProductsQuery);
   response.send(productsArray);
 });
+
+// Get Product API
+app.get(
+  "/products/:productId",
+  authenticateToken,
+  async (request, response) => {
+    const { productId } = request.params;
+    const getProductQuery = `
+    SELECT * FROM products WHERE id=${productId};
+    `;
+    const product = await db.get(getProductQuery);
+    response.send(product);
+  }
+);
 
 // Add products API
 app.post("/products/", authenticateToken, async (request, response) => {

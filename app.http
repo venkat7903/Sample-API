@@ -36,6 +36,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hb
 
 ###
 
+GET http://localhost:3000/products/10/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
+
+###
+
 POST http://localhost:3000/products
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
 Content-Type: application/json
