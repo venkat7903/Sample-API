@@ -80,6 +80,30 @@ app.post("/register/", async (request, response) => {
   }
 });
 
+// Admin Register API
+app.post("/admin/register/", async (request, response) => {
+  const { username, name, password } = request.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const getAdminQuery = `
+  SELECT * FROM admin WHERE username='${username}';
+  `;
+  const dbUser = await db.get(getAdminQuery);
+
+  if (dbUser === undefined) {
+    const createAdminQuery = `
+      INSERT INTO admin (username, name, password, is_admin)
+      VALUES ('${username}', '${name}', '${hashedPassword}', true);
+      `;
+    const dbResponse = await db.run(createAdminQuery);
+    response.send({
+      adminId: dbResponse.lastID,
+      message: `Admin created with Id ${dbResponse.lastID}`,
+    });
+  } else {
+    response.status(400).send({ message: "Admin Already Exists" });
+  }
+});
+
 // Login API
 app.post("/login/", async (request, response) => {
   const { username, password } = request.body;
@@ -94,6 +118,28 @@ app.post("/login/", async (request, response) => {
 
     if (isPasswordMatch === true) {
       const jwtToken = jwt.sign(dbUser, "SECRET_KEY");
+      response.send({ jwtToken, message: "Login Successful" });
+    } else {
+      response.status(400).send({ message: "Invalid Password" });
+    }
+  }
+});
+
+// Admin Login API
+app.post("/admin/login/", async (request, response) => {
+  const { username, password } = request.body;
+  const getAdminQuery = `
+  SELECT * FROM admin WHERE username='${username}';
+  `;
+  const dbuser = await db.get(getAdminQuery);
+
+  if (dbuser === undefined) {
+    response.status(400).send({ message: "Invalid Admin" });
+  } else {
+    const isPasswordMatch = await bcrypt.compare(password, dbuser.password);
+
+    if (isPasswordMatch === true) {
+      const jwtToken = jwt.sign(dbuser, "SECRET_KEY");
       response.send({ jwtToken, message: "Login Successful" });
     } else {
       response.status(400).send({ message: "Invalid Password" });
