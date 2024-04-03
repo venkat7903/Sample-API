@@ -167,7 +167,12 @@ app.get(
     SELECT * FROM products WHERE id=${productId};
     `;
     const product = await db.get(getProductQuery);
-    response.send(product);
+
+    if (product === undefined) {
+      response.send({ message: `No Such Product with Id ${productId}` });
+    } else {
+      response.send(product);
+    }
   }
 );
 
@@ -212,3 +217,48 @@ app.put(
     response.send({ message: "Product Details Updated Successfully" });
   }
 );
+
+// Delete Product API
+app.delete(
+  "/products/:productId/",
+  authenticateToken,
+  async (request, response) => {
+    const { productId } = request.params;
+    const getProductQuery = `SELECT * FROM products WHERE id=${productId};`;
+    const dbProduct = await db.get(getProductQuery);
+
+    if (dbProduct === undefined) {
+      response.send({ message: "No Such Product to delete" });
+    } else {
+      const deleteQuery = `
+      DELETE FROM products WHERE id=${productId};
+      `;
+      await db.run(deleteQuery);
+      response.send({ message: "Product Deleted Successfully" });
+    }
+  }
+);
+
+// Get Users
+app.get("/users/", async (request, response) => {
+  const getUsersQuery = `
+  SELECT * FROM user;
+  `;
+  const userArray = await db.all(getUsersQuery);
+  response.send(userArray);
+});
+
+// Get Admins
+app.get("/admins/", async (request, response) => {
+  const getAdminsQuery = `
+  SELECT * FROM admin;
+  `;
+  const adminArray = await db.all(getAdminsQuery);
+  response.send(adminArray);
+});
+
+// Userprofile API
+app.get("/user-profile/", authenticateToken, async (request, response) => {
+  const { payload } = request;
+  response.send(payload);
+});

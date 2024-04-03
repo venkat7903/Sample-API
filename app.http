@@ -1,4 +1,4 @@
-POST http://localhost:3000/register/
+POST http://localhost:3001/register/
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3000/admin/register/
+POST http://localhost:3001/admin/register/
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/login/
+POST http://localhost:3001/login/
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3000/admin/login/
+POST http://localhost:3001/admin/login/
 Content-Type: application/json
 
 {
@@ -43,23 +43,23 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/products
+GET http://localhost:3001/products
 #Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsIm5hbWUiOiJhZG1pbmlzdHJhdG9yIiwicGFzc3dvcmQiOiIkMmIkMTAkd1FwNWhTSnhXeFFKcVRxdVBVczR6LnhYUUxjZWEvZ0xKZ0FURGg0U3oyTkhscW9sRXhpSFciLCJpc19hZG1pbiI6MSwiaWF0IjoxNzEyMDczNTEzfQ.lxj3O4_rvEQSU7I8qPg51rlQCvWso7_UtJlFa-V0Ngo
 ###
 
-GET http://localhost:3000/products?orderBy=price&order=DESC
+GET http://localhost:3001/products?orderBy=price&order=DESC
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
 
 ###
 
-GET http://localhost:3000/products/10/
+GET http://localhost:3001/products/12/
 #Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsIm5hbWUiOiJhZG1pbmlzdHJhdG9yIiwicGFzc3dvcmQiOiIkMmIkMTAkd1FwNWhTSnhXeFFKcVRxdVBVczR6LnhYUUxjZWEvZ0xKZ0FURGg0U3oyTkhscW9sRXhpSFciLCJpc19hZG1pbiI6MSwiaWF0IjoxNzEyMDczNTEzfQ.lxj3O4_rvEQSU7I8qPg51rlQCvWso7_UtJlFa-V0Ngo
 
 ###
 
-POST http://localhost:3000/products
+POST http://localhost:3001/products
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
 Content-Type: application/json
 
@@ -71,16 +71,35 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/products/10/
+PUT http://localhost:3001/products/11/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
 Content-Type: application/json
 
+{
+    "productName": "Hair Clip"
+}
+
 # {
-#     "productName": "Hair Clip"
+#     "price": 30
 # }
 
-{
-    "price": 30
-}
+###
+
+DELETE http://localhost:3001/products/10/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsIm5hbWUiOiJhZG1pbmlzdHJhdG9yIiwicGFzc3dvcmQiOiIkMmIkMTAkd1FwNWhTSnhXeFFKcVRxdVBVczR6LnhYUUxjZWEvZ0xKZ0FURGg0U3oyTkhscW9sRXhpSFciLCJpc19hZG1pbiI6MSwiaWF0IjoxNzEyMDczNTEzfQ.lxj3O4_rvEQSU7I8qPg51rlQCvWso7_UtJlFa-V0Ngo
+
+###
+
+GET http://localhost:3001/users/
+
+###
+
+GET http://localhost:3001/admins/ 
+
+###
+
+GET http://localhost:3001/user-profile/
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsIm5hbWUiOiJhZG1pbmlzdHJhdG9yIiwicGFzc3dvcmQiOiIkMmIkMTAkd1FwNWhTSnhXeFFKcVRxdVBVczR6LnhYUUxjZWEvZ0xKZ0FURGg0U3oyTkhscW9sRXhpSFciLCJpc19hZG1pbiI6MSwiaWF0IjoxNzEyMDczNTEzfQ.lxj3O4_rvEQSU7I8qPg51rlQCvWso7_UtJlFa-V0Ngo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTE5ODA2Njl9.T-v1nF-HBuSFWWBSIr_ncstwZsOm-9qQs5s1YLY6lvw
 
 ###
