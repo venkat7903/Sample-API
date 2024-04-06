@@ -21,8 +21,8 @@ const initiateDBAndServer = async () => {
       filename: dbPath,
       driver: sqlite3.Database,
     });
-    app.listen(3000, () => {
-      console.log("Server is running at http://localhost:3000");
+    app.listen(3001, () => {
+      console.log("Server is running at http://localhost:3001");
     });
   } catch (e) {
     console.log(`DB Error: ${e.message}`);
@@ -261,4 +261,46 @@ app.get("/admins/", async (request, response) => {
 app.get("/user-profile/", authenticateToken, async (request, response) => {
   const { payload } = request;
   response.send(payload);
+});
+
+// Add products to Cart
+app.post("/cart/", authenticateToken, async (request, response) => {
+  const { payload } = request;
+  const { productId, productName, quantity } = request.body;
+
+  const getCartProductQuery = `
+  SELECT * FROM cart
+  WHERE product_id=${productId} and user_id=${payload.id};
+  `;
+  const product = await db.get(getCartProductQuery);
+
+  if (product === undefined) {
+    const addProductQuery = `
+    INSERT INTO cart (user_id, product_id, product_name, quantity)
+    VALUES (${payload.id}, ${productId}, '${productName}', ${quantity});
+  `;
+    const dbResponse = await db.run(addProductQuery);
+    response.send({
+      cartId: dbResponse.lastID,
+      message: `Product is added in your cart with id ${dbResponse.lastID}`,
+    });
+  } else {
+    const updateQuantityQuery = `
+    UPDATE cart 
+    SET quantity=${product.quantity + quantity}
+    WHERE product_id=${productId} and user_id=${payload.id}
+    `;
+    await db.run(updateQuantityQuery);
+    response.send({ message: "Quantity Updated" });
+  }
+});
+
+// Get Cart Products
+app.get("/cart/", authenticateToken, async (request, response) => {
+  const { payload } = request;
+  const getCartProducts = `
+  SELECT * FROM cart WHERE user_id=${payload.id};
+  `;
+  const cartProductsArray = await db.all(getCartProducts);
+  response.send(cartProductsArray);
 });
