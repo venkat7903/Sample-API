@@ -304,3 +304,14 @@ app.get("/cart/", authenticateToken, async (request, response) => {
   const cartProductsArray = await db.all(getCartProducts);
   response.send(cartProductsArray);
 });
+
+// Delete Cart Products
+app.delete("/cart/:id", authenticateToken, async (request, response) => {
+  const { id } = request.params;
+  const deleteProductQuery = `
+  DELETE FROM cart 
+  WHERE id=${id};
+  `;
+  await db.run(deleteProductQuery);
+  response.send({ message: "Item deleted successfully" });
+});
