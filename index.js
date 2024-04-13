@@ -327,13 +327,22 @@ app.put("/cart/:id", authenticateToken, async (request, response) => {
 
   const { quantity = cartProduct.quantity } = request.body;
 
-  const updateQuantityQuery = `
+  if (quantity >= 1) {
+    const updateQuantityQuery = `
     UPDATE cart 
     SET 
       quantity=${quantity}
     WHERE 
       id=${id};
   `;
-  await db.run(updateQuantityQuery);
-  response.send({ message: "Quantity Updated" });
+    await db.run(updateQuantityQuery);
+    response.send({ message: "Quantity Updated" });
+  } else {
+    const deleteProductQuery = `
+      DELETE FROM cart 
+      WHERE id=${id};
+  `;
+    await db.run(deleteProductQuery);
+    response.send({ message: "Item deleted successfully" });
+  }
 });
