@@ -169,7 +169,9 @@ app.get(
     const product = await db.get(getProductQuery);
 
     if (product === undefined) {
-      response.send({ message: `No Such Product with Id ${productId}` });
+      response
+        .status(400)
+        .send({ message: `No Such Product with Id ${productId}` });
     } else {
       response.send(product);
     }
