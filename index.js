@@ -266,7 +266,7 @@ app.get("/user-profile/", authenticateToken, async (request, response) => {
 // Add products to Cart
 app.post("/cart/", authenticateToken, async (request, response) => {
   const { payload } = request;
-  const { productId, productName, quantity, imageUrl } = request.body;
+  const { productId, productName, quantity, imageUrl, price } = request.body;
 
   const getCartProductQuery = `
   SELECT * FROM cart
@@ -276,8 +276,8 @@ app.post("/cart/", authenticateToken, async (request, response) => {
 
   if (product === undefined) {
     const addProductQuery = `
-    INSERT INTO cart (user_id, product_id, product_name, quantity, image_url)
-    VALUES (${payload.id}, ${productId}, '${productName}', ${quantity}, '${imageUrl}');
+    INSERT INTO cart (user_id, product_id, product_name, quantity, image_url, price)
+    VALUES (${payload.id}, ${productId}, '${productName}', ${quantity}, '${imageUrl}', ${price});
   `;
     const dbResponse = await db.run(addProductQuery);
     response.send({
