@@ -582,7 +582,9 @@ https://sample-api-jv77.onrender.com/
  - **Scenario 1**
 
     - **Description**:
+      
         Add Products to Cart
+      
     - **Response**
 
           ```
@@ -593,7 +595,7 @@ https://sample-api-jv77.onrender.com/
           ```
   - **Scenario 2**
 
-      - **Description**
+      - **Description**:
           If the product already exists
         
       - **Response**
@@ -622,7 +624,7 @@ https://sample-api-jv77.onrender.com/
   }
 ```
  
-- **Description**
+- **Description**:
     Update the cart product quanity
   
 - **Response**
@@ -643,7 +645,7 @@ https://sample-api-jv77.onrender.com/
 
 #### Method: `DELETE`
  
-- **Description**
+- **Description**:
     Delete the cart product
   
 - **Response**
