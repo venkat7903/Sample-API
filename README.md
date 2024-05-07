@@ -196,10 +196,112 @@ https://sample-api-jv77.onrender.com/
 
     ```
     {
-      "jwtToken":          
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEciLCJpYXQiOjE3MTUwMjE3MjB9.OIDIhORXCE7n3fDoGhv2TwznTjNuSGD4GH4WrD8KlGQ",
+      "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEc",
       "message": "Login Successful"
     }
     ```
 
+</Section>
+
+
+<Section id="section4">
+
+### API 4
+
+#### Path: `/admin/login/`
+
+#### Method: `POST`
+
+**Request**
+
+```
+{
+    "username": "admin",
+    "password": "admin1234"
+}
+```
+
+- **Scenario 1**
+
+  - **Description**:
+
+    If the admin doesn't have a account
+
+  - **Response**
+    - **Status code**
+      ```
+      400
+      ```
+    - **Body**
+      ```
+      {
+        "message": "Invalid Admin"
+      }
+      ```
+
+- **Scenario 2**
+
+  - **Description**:
+
+    If the admin provides an incorrect password
+
+  - **Response**
+    - **Status code**
+      ```
+      400
+      ```
+    - **Body**
+      ```
+      {
+        "message": "Invalid Password"
+      }
+      ```
+
+- **Scenario 3**
+
+  - **Description**:
+
+    Successful login of the admin
+
+  - **Response**
+
+    Return the JWT Token
+
+    ```
+    {
+      "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJyYWoiLCJuYW1lIjoicmFqIiwicGFzc3dvcmQiOiIkMmIkMTAkQjdMUkliOW9pQjREa00ueU0xOGJxLjRObnU2L3d5ak5mLlFyWEhtREdqRUdTb1BlNUUySEc",
+      "message": "Login Successful"
+    }
+    ```
+
+</Section>
+
+
+<Section id="section5">
+
+### API 5
+
+#### Path: `/products/`
+
+#### Method: `GET`
+
+- **Description**:
+
+    Gives the list of products
+
+- **Response**
+
+  ```
+  [
+  {
+    "id": 1,
+    "product_name": "shirt",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZKMY8sbBdqhf2kE1swSJQla9C212DZtbTSFcYg1_4hA&s",
+    "price": 200
+  },
+  .....
+  ]
+  ```
+
+  
 </Section>
