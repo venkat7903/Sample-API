@@ -656,3 +656,33 @@ https://sample-api-jv77.onrender.com/
   
 </Section>
 
+
+# Technologies Used
+
+Node
+
+Express
+
+sqlite 
+
+sqlite3
+
+# React Packages Used
+
+**bcrypt** for encrypting and decrypting the password
+
+**cors** for deploying the website in render
+
+**jsonwebtoken** to generate and verify the JWT token
+
+**sqlite3** to access database throught Command Line
+
+# Description
+
+**Backend Development**:
+Used Node.js and Express.js for server-side operations.
+
+**Admin Panel:** Created APIS for admin panel for managing products.
+
+**Deployment:** Hosted the website on **Render** platform.
+
