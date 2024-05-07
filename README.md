@@ -305,3 +305,354 @@ https://sample-api-jv77.onrender.com/
 
   
 </Section>
+
+<Section id="section6">
+
+### API 6
+
+#### Path: `/products?orderBy=price&order=DESC`
+
+#### Method: `GET`
+
+- **Description**:
+
+    Gives the list of filtered products
+
+- **Response**
+
+  ```
+  [
+  {
+    "id": 4,
+    "product_name": "Pant",
+    "image_url": "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "price": 500
+  },
+  .....
+  ]
+  ```
+
+  
+</Section>
+
+
+<Section id="section7">
+
+### API 7
+
+#### Path: `/products/:productId`
+
+#### Method: `GET`
+
+- **Description**:
+
+    Gives the details of the product
+
+- **Response**
+
+  ```
+  [
+  {
+    "id": 4,
+    "product_name": "Pant",
+    "image_url": "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "price": 500
+  } 
+  .....
+  ]
+  ```
+
+  
+</Section><Section id="section8">
+
+### API 8
+
+#### Path: `/products/`
+
+#### Method: `POST`
+
+**Request**
+  ```
+    {
+      "productName": "Clips",
+      "imageUrl": "https://5.imimg.com/data5/PK/QK/GY/SELLER-81178992/snap-hair-clips-500x500.jpg",
+      "price": 10
+   }
+  ```
+
+- **Description**:
+
+    Add the product
+
+- **Response**
+
+  ```
+  {
+    "productId": 12,
+    "message": "Product is added successfully with productId 12"
+  }
+  ```
+
+  
+</Section>
+
+</Section><Section id="section9">
+
+### API 9
+
+#### Path: `/products/:productId/`
+
+#### Method: `PUT`
+
+**Request**
+  ```
+    {
+      "productName": "Hair Clip"
+    }
+  ```
+
+- **Description**:
+
+    Update the product
+
+- **Response**
+
+  ```
+  {
+    "message": "Product Details Updated Successfully"
+  }
+  ```
+
+  
+</Section>
+
+<Section id="section10">
+
+### API 10
+
+#### Path: `/products/:productId/`
+
+#### Method: `DELETE`
+
+- **Description**:
+
+    Delete the product
+
+- **Response**
+
+  ```
+  {
+    "message": "Product Deleted Successfully"
+  }
+  ```
+
+  
+</Section>
+
+
+<Section id="section11">
+
+### API 11
+
+#### Path: `/users/`
+
+#### Method: `GET`
+
+- **Description**:
+    Get the list of users
+
+- **Response**
+
+  ```
+  [
+  {
+    "id": 1,
+    "username": "ram",
+    "name": "raj",
+    "password": "$2b$10$B7LRIb9oiB4DkM.yM18bq.4Nnu6/wyjNf.QrXHmDGjEGSoPe5E2HG",
+  },
+  ...
+  ]
+  ```
+  
+</Section>
+
+<Section id="section12">
+
+### API 12
+
+#### Path: `/admins/`
+
+#### Method: `GET`
+
+- **Description**:
+    Get the list of admins
+
+- **Response**
+
+  ```
+  [
+  {
+    "id": 1,
+    "username": "admin",
+    "name": "administrator",
+    "password": "$2b$10$wQp5hSJxWxQJqTquPUs4z.xXQLcea/gLJgATDh4Sz2NHlqolExiHW",
+    "is_admin": 1
+  },
+  ...
+  ]
+  ```
+  
+</Section>
+
+<Section id="section13">
+
+### API 13
+
+#### Path: `/user-profile/`
+
+#### Method: `GET`
+
+- **Description**:
+    Get the Details of the current login user
+
+- **Response**
+
+  ```
+  {
+    "id": 2,
+    "username": "raj",
+    "name": "raj",
+    "password": "$2b$10$B7LRIb9oiB4DkM.yM18bq.4Nnu6/wyjNf.QrXHmDGjEGSoPe5E2HG",
+    "iat": 1711980669
+  }
+  ```
+  
+</Section>
+
+
+<Section id="section14">
+
+### API 14
+
+#### Path: `/cart/`
+
+#### Method: `GET`
+
+- **Description**:
+    Get the list of cart products
+
+- **Response**
+
+  ```
+  [
+  {
+    "id": 3,
+    "user_id": 2,
+    "product_id": 2,
+    "product_name": "pant",
+    "quantity": 1,
+    "image_url": null,
+    "price": null
+  },
+  ....
+  ]
+  ```
+  
+</Section>
+
+<Section id="section15">
+
+### API 15
+
+#### Path: `/cart/`
+
+#### Method: `POST`
+
+**Request**:
+```
+  {
+    "productId": 1,
+    "productName": "pant",
+    "quantity": 1,
+    "imageUrl": "https://images.pexels.com/photos/1082528/pexels-photo-1082528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "price": 100
+ }
+```
+ - **Scenario 1**
+
+    - **Description**:
+        Add Products to Cart
+    - **Response**
+
+          ```
+          {
+            "cartId": 7,
+            "message": "Product is added in your cart with id 7"
+          }
+          ```
+  - **Scenario 2**
+
+      - **Description**
+          If the product already exists
+        
+      - **Response**
+
+          ```
+          {
+            "message": "Quantity Updated"
+          }
+          ```
+  
+</Section>
+
+
+<Section id="section16">
+
+### API 16
+
+#### Path: `/cart/:cartId`
+
+#### Method: `PUT`
+
+**Request**:
+```
+  {
+    "quantity": 1000
+  }
+```
+ 
+- **Description**
+    Update the cart product quanity
+  
+- **Response**
+
+    ```
+    {
+      "message": "Quantity Updated"
+    }
+    ```
+  
+</Section>
+
+<Section id="section17">
+
+### API 17
+
+#### Path: `/cart/:cartId`
+
+#### Method: `DELETE`
+ 
+- **Description**
+    Delete the cart product
+  
+- **Response**
+
+    ```
+    {
+      "message": "Item deleted successfully"
+    }
+    ```
+  
+</Section>
+
