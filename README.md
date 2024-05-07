@@ -2,11 +2,11 @@
 
 Clone this repo in your IDE using commad git clone https://github.com/venkat7903/Sample-API.git
 
-First run npm install to install necessary dependencies in package.json file.
+First run **npm install** to install necessary dependencies in package.json file.
 
 Run **nodemon index.js** to start the server
 
-The server will start running at localhost:3001
+The server will start running at **localhost:3001**
 
 # API URL
 https://sample-api-jv77.onrender.com/
