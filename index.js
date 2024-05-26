@@ -7,6 +7,8 @@ const bcrypt = require("bcrypt");
 const cors = require("cors");
 const { request } = require("http");
 
+const port = process.env.PORT || 3001;
+
 const app = express();
 
 app.use(express.json());
@@ -21,7 +23,7 @@ const initiateDBAndServer = async () => {
       filename: dbPath,
       driver: sqlite3.Database,
     });
-    app.listen(3001, () => {
+    app.listen(port, () => {
       console.log("Server is running at http://localhost:3001");
     });
   } catch (e) {
